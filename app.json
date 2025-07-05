@@ -23,7 +23,12 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "extra": {
+      "supportsRTL": true,
+      "forcesRTL": true
+    },
     "plugins": [
+      "expo-localization",
       "expo-router",
       [
         "expo-splash-screen",
@@ -32,6 +37,12 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": "node_modules/@expo-google-fonts/vazirmatn/400Regular/Vazirmatn_400Regular.ttf"
         }
       ]
     ],

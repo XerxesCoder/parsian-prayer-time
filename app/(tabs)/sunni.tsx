@@ -13,8 +13,8 @@ const timeToDate = (timeString: string, currentDate: Date) => {
   return date;
 };
 
-export default function Index() {
-  const { Shia } = usePrayerTimes();
+export default function Sunni() {
+  const { Sunni } = usePrayerTimes();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [currentPrayer, setCurrentPrayer] = useState<string | null>(null);
   const [nextPrayer, setNextPrayer] = useState<string | null>(null);
@@ -28,12 +28,12 @@ export default function Index() {
 
   useEffect(() => {
     const prayers = [
-      { name: "اذان صبح", time: Shia.fajr },
-      { name: "طلوع آفتاب", time: Shia.sunrise },
-      { name: "اذان ظهر", time: Shia.dhuhr },
-      { name: "اذان عصر", time: Shia.asr },
-      { name: "اذان مغرب", time: Shia.maghrib },
-      { name: "اذان عشا", time: Shia.isha },
+      { name: "اذان صبح", time: Sunni.fajr },
+      { name: "طلوع آفتاب", time: Sunni.sunrise },
+      { name: "اذان ظهر", time: Sunni.dhuhr },
+      { name: "اذان عصر", time: Sunni.asr },
+      { name: "اذان مغرب", time: Sunni.maghrib },
+      { name: "اذان عشا", time: Sunni.isha },
     ];
 
     let current: string | null = null;
@@ -64,15 +64,15 @@ export default function Index() {
 
     setCurrentPrayer(current);
     setNextPrayer(next);
-  }, [Shia, currentTime]);
+  }, [Sunni, currentTime]);
 
   return (
     <SafeAreaView className="flex-1 items-center justify-start px-6 py-10 bg-slate-950">
-      <TimeCard name={"تـشـیـع"} />
+      <TimeCard name={"تـسـنـن"} />
       <View className="w-full flex-col justify-between items-center gap-3 mt-6">
         <PrayCard
           type="اذان صبح"
-          time={Shia.fajr}
+          time={Sunni.fajr}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "اذان صبح"}
           isNextPrayer={nextPrayer === "اذان صبح"}
@@ -80,7 +80,7 @@ export default function Index() {
         />
         <PrayCard
           type="طلوع آفتاب"
-          time={Shia.sunrise}
+          time={Sunni.sunrise}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "طلوع آفتاب"}
           isNextPrayer={nextPrayer === "طلوع آفتاب"}
@@ -88,7 +88,7 @@ export default function Index() {
         />
         <PrayCard
           type="اذان ظهر"
-          time={Shia.dhuhr}
+          time={Sunni.dhuhr}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "اذان ظهر"}
           isNextPrayer={nextPrayer === "اذان ظهر"}
@@ -96,7 +96,7 @@ export default function Index() {
         />
         <PrayCard
           type="اذان عصر"
-          time={Shia.asr}
+          time={Sunni.asr}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "اذان عصر"}
           isNextPrayer={nextPrayer === "اذان عصر"}
@@ -104,7 +104,7 @@ export default function Index() {
         />
         <PrayCard
           type="اذان مغرب"
-          time={Shia.maghrib}
+          time={Sunni.maghrib}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "اذان مغرب"}
           isNextPrayer={nextPrayer === "اذان مغرب"}
@@ -112,7 +112,7 @@ export default function Index() {
         />
         <PrayCard
           type="اذان عشا"
-          time={Shia.isha}
+          time={Sunni.isha}
           currentTime={currentTime}
           isCurrentPrayer={currentPrayer === "اذان عشا"}
           isNextPrayer={nextPrayer === "اذان عشا"}
