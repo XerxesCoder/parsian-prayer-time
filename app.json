@@ -8,15 +8,26 @@
     "scheme": "parsianprayertime",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true,
+        "ExpoLocalization_forcesRTL": true
+      }
     },
     "android": {
+      "permissions": ["android.permission.FOREGROUND_SERVICE"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#152331"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.xerxescoder.parsianprayertime"
     },
     "web": {
       "bundler": "metro",
@@ -25,7 +36,11 @@
     },
     "extra": {
       "supportsRTL": true,
-      "forcesRTL": true
+      "forcesRTL": true,
+      "router": {},
+      "eas": {
+        "projectId": "27f290d6-7732-41b0-98ae-363ed294b10c"
+      }
     },
     "plugins": [
       "expo-localization",
@@ -36,18 +51,15 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#152331"
         }
       ],
-      [
-        "expo-font",
-        {
-          "fonts": "node_modules/@expo-google-fonts/vazirmatn/400Regular/Vazirmatn_400Regular.ttf"
-        }
-      ]
+
+      "expo-audio"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "owner": "xerxescoder"
   }
 }

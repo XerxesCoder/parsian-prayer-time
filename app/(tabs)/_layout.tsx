@@ -3,6 +3,7 @@ import { Tabs } from "expo-router";
 export default function TabLayout() {
   return (
     <Tabs
+      initialRouteName="index"
       screenOptions={{
         tabBarActiveTintColor: "#3dffa8",
         headerStyle: {
@@ -11,29 +12,30 @@ export default function TabLayout() {
         headerShadowVisible: false,
         headerTintColor: "#fff",
         tabBarStyle: {
+
           backgroundColor: "#25292e",
         },
       }}
     >
+
       <Tabs.Screen
-        name="sunni"
+        name="setting"
         options={{
-          title: "اهل تـسـنـن",
+          title: "تنظیمات",
           headerShown: false,
-          
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={focused ? "star-sharp" : "star-outline"}
+              name={focused ? "settings-sharp" : "settings-outline"}
               color={color}
               size={24}
             />
           ),
         }}
       />
-      <Tabs.Screen
+            <Tabs.Screen
         name="index"
         options={{
-          title: "اهل تـشـیـع",
+          title: "اوقات شرعی",
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons

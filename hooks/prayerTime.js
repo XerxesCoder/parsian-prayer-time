@@ -34,11 +34,53 @@ export default function usePrayerTimes() {
     };
   }
 
+  function getNextPrayerInfo(prayerTimes) {
+    const now = new Date();
+    const prayers = [
+      { name: "fajr", time: prayerTimes.fajr },
+      { name: "sunrise", time: prayerTimes.sunrise },
+      { name: "dhuhr", time: prayerTimes.dhuhr },
+      { name: "asr", time: prayerTimes.asr },
+      { name: "maghrib", time: prayerTimes.maghrib },
+      { name: "isha", time: prayerTimes.isha },
+    ];
+
+    // Find next prayer
+    for (const prayer of prayers) {
+      if (prayer.time > now) {
+        return {
+          name: prayer.name,
+          time: prayer.time,
+          remaining: Math.floor((prayer.time.getTime() - now.getTime()) / 1000),
+        };
+      }
+    }
+
+    // If no prayer found, return first prayer of next day
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowPrayerTimes = new PrayerTimes(coordinates, tomorrow, params);
+    return {
+      name: "fajr",
+      time: tomorrowPrayerTimes.fajr,
+      remaining: Math.floor((tomorrowPrayerTimes.fajr.getTime() - now.getTime()) / 1000),
+    };
+  }
+
   const formattedSunni = formatPrayerTimes(Sunni, "Asia/Tehran");
   const formattedShia = formatPrayerTimes(Shia, "Asia/Tehran");
 
+  const nextSunniPrayer = getNextPrayerInfo(Sunni);
+  const nextShiaPrayer = getNextPrayerInfo(Shia);
+
   return {
-    Sunni: formattedSunni,
-    Shia: formattedShia,
+    Sunni: {
+      times: formattedSunni,
+      nextPrayer: nextSunniPrayer,
+    },
+    Shia: {
+      times: formattedShia,
+      nextPrayer: nextShiaPrayer,
+    },
   };
 }
